@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My VPN (JumpJump Style)</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #0b0e17; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: #1a1f2f; padding: 30px; border-radius: 30px; text-align: center; width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { font-size: 24px; margin-bottom: 5px; }
+        .sub { color: #8892b0; font-size: 14px; margin-bottom: 20px; }
+        .status-circle { width: 80px; height: 80px; border-radius: 50%; background: #2a3050; margin: 20px auto; display: flex; align-items: center; justify-content: center; border: 3px solid #4a5a8a; }
+        .status-text { font-size: 18px; font-weight: bold; color: #64ffda; }
+        .btn { background: #4a5a8a; border: none; color: white; padding: 15px 40px; border-radius: 50px; font-size: 18px; font-weight: bold; margin-top: 20px; cursor: pointer; transition: 0.3s; }
+        .btn:hover { background: #5a6a9a; transform: scale(1.02); }
+        .btn.active { background: #ff5555; }
+        .server-list { margin-top: 25px; text-align: left; }
+        .server-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #2a3050; }
+        .server-name { font-weight: bold; }
+        .ping { color: #8892b0; font-size: 14px; }
+        .footer { margin-top: 20px; font-size: 12px; color: #8892b0; }
+        .footer a { color: #64ffda; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ MyVPN</h1>
+        <p class="sub">Fast & Secure</p>
+        
+        <div class="status-circle" id="statusCircle">
+            <span class="status-text" id="statusText">Disconnected</span>
+        </div>
+        
+        <button class="btn" id="vpnBtn">Connect</button>
+        
+        <div class="server-list">
+            <div class="server-item"><span class="server-name">🇺🇸 United States</span><span class="ping">24 ms</span></div>
+            <div class="server-item"><span class="server-name">🇸🇬 Singapore</span><span class="ping">45 ms</span></div>
+            <div class="server-item"><span class="server-name">🇯🇵 Japan</span><span class="ping">68 ms</span></div>
+        </div>
+        
+        <div class="footer">
+            <a href="#">Terms</a> • <a href="#">Privacy</a>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('vpnBtn');
+        const statusText = document.getElementById('statusText');
+        const statusCircle = document.getElementById('statusCircle');
+        let isConnected = false;
+
+        btn.addEventListener('click', function() {
+            isConnected = !isConnected;
+            if (isConnected) {
+                statusText.textContent = 'Connected';
+                statusCircle.style.borderColor = '#64ffda';
+                btn.textContent = 'Disconnect';
+                btn.classList.add('active');
+                // ဒီနေရာမှာ VPN ချိတ်ဆက်ရန် API ကိုခေါ်ပါ။
+                alert('VPN Connected (Simulation)');
+            } else {
+                statusText.textContent = 'Disconnected';
+                statusCircle.style.borderColor = '#4a5a8a';
+                btn.textContent = 'Connect';
+                btn.classList.remove('active');
+                // ဒီနေရာမှာ VPN ဖြုတ်ရန် API ကိုခေါ်ပါ။
+                alert('VPN Disconnected (Simulation)');
+            }
+        });
+    </script>
+</body>
+</html>
